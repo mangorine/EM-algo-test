@@ -57,3 +57,5 @@ You will also find the graph of clusters of both algorithm plotted by reducing d
 
 - This time we reduce the number of inits in K-means, because we want to compare time and not accuracy. We see that even if the K-means algorithm is lighter every iteration, it converges slower and the run time is longer.
 - In fact ,GMM involves Matrix inverse O(D^3) and Covariance update O(D^2) with D the number of features (dimensions of the matrix) while the computation of euclidian norm is O(D) in complexity.
+
+# Next Dataset/QDA
