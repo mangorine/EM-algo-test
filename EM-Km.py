@@ -6,6 +6,8 @@ from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
+
 
 # fetch dataset
 iris = fetch_ucirepo(id=53)
@@ -31,12 +33,16 @@ km_ari = adjusted_rand_score(y, kmeans_labels)
 km_nmi = normalized_mutual_info_score(y, kmeans_labels)
 em_ari = adjusted_rand_score(y, gmm_labels)
 em_nmi = normalized_mutual_info_score(y, gmm_labels)
+km_sil = silhouette_score(X_std, kmeans_labels, metric="euclidean")
+em_sil = silhouette_score(X_std, gmm_labels, metric="euclidean")
 
 print("=== K-means ===")
+print(f"K-means Silhouette: {km_sil:.4f}")
 print(f"ARI: {km_ari:.4f}")
 print(f"NMI: {km_nmi:.4f}")
 
 print("\n=== Gaussian Mixture (EM) ===")
+print(f"GMM Silhouette   : {em_sil:.4f}")
 print(f"ARI: {em_ari:.4f}")
 print(f"NMI: {em_nmi:.4f}")
 
