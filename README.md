@@ -17,3 +17,9 @@ You'll also have to install the ucimlrepo, to do this run this command in your t
 pip install ucimlrepo
 
 ## Results
+
+You will find the results of both algorithm here : [Result](iris_clusters_sklearn.csv)
+
+You will also find the graph of clusters of both algorithm plotted by reducing dimensionality with PCA here : [Result Graph](Figure_1.png)
+
+## Analysis
