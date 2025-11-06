@@ -25,17 +25,15 @@ pip install ucimlrepo
 
 ## Results
 
-**K-means**
+**K-means :**
 
-K-means Silhouette: 0.4590
+- K-means Silhouette: 0.4590
+- ARI: 0.6201
 
-ARI: 0.6201
+**Gaussian Mixture (EM) :**
 
-**Gaussian Mixture (EM)**
-
-GMM Silhouette : 0.3728
-
-ARI: 0.9039
+- GMM Silhouette : 0.3728
+- ARI: 0.9039
 
 You will find the results of both algorithm here : [Result](iris_clusters_sklearn.csv)
 
