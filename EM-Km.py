@@ -55,28 +55,36 @@ print(f"ARI: {em_ari:.4f}")
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_std)
 
+y_index, class_names = pd.factorize(iris.data.targets.iloc[:, 0])
+
 plt.figure(figsize=(12, 5))
 
 # K-means plot
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 plt.scatter(X_pca[:, 0], X_pca[:, 1], c=kmeans_labels, cmap="viridis", s=40)
 plt.title("K-means Clustering on Iris (PCA projection)")
 plt.xlabel("Principal Component 1")
 plt.ylabel("Principal Component 2")
 
 # GMM plot
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 2)
 plt.scatter(X_pca[:, 0], X_pca[:, 1], c=gmm_labels, cmap="viridis", s=40)
 plt.title("Gaussian Mixture (EM) on Iris (PCA projection)")
 plt.xlabel("Principal Component 1")
 plt.ylabel("Principal Component 2")
 
+# True Labels plot
+plt.subplot(1, 3, 3)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y_index, cmap="viridis", s=40)
+plt.title("True Labels of Iris (PCA projection)")
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+
+
 plt.tight_layout()
 plt.show()
 
 # Saving results to CSV
-y_index, class_names = pd.factorize(iris.data.targets.iloc[:, 0])
-
 results = pd.DataFrame(
     {
         "true_label": y_index,
