@@ -19,7 +19,7 @@ If you have issues running the code, it may be because your python doesn't trust
 
 /Applications/Python\ 3.13/Install\ Certificates.command
 
-You'll also have to install the ucimlrepo, to do this run this command in your terminal:
+You'll also have to install the ucimlrepo package, to do this run this command in your terminal:
 
 pip install ucimlrepo
 
@@ -27,11 +27,13 @@ pip install ucimlrepo
 
 **K-means :**
 
+- K-means clustering time: 0.2985 seconds
 - K-means Silhouette: 0.4590
 - ARI: 0.6201
 
 **Gaussian Mixture (EM) :**
 
+- EM clustering time: 0.0062 seconds
 - GMM Silhouette : 0.3728
 - ARI: 0.9039
 
@@ -47,4 +49,10 @@ Looking at ARI:
 
 - GMM has clearly better predictions of the clusters acheiving almost 90%, K-means only achieves 62%. That's because while K-means finds geometrical cleanest clusters (often results to spherical clusters) so it's limited to prediction with that kind of logic, GMM can fit and predict clusters accurately even if they are not equal variance and spherical.
 
+Looking at SS:
+
 - However the clusters are less dense with GMM than K-means This result is no surprise, K-means does clusters using euclidian distance, just like silhouette. On the other hand, GMM uses probalistic log-likelihood.
+
+Looking at Time:
+
+-

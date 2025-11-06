@@ -7,6 +7,7 @@ from sklearn.mixture import GaussianMixture
 from sklearn.metrics import adjusted_rand_score
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
+from time import time
 
 
 # fetch dataset
@@ -21,12 +22,18 @@ scaler = StandardScaler()
 X_std = scaler.fit_transform(X)
 
 # K-means clustering
+start = time()
 kmeans = KMeans(n_clusters=3, random_state=0, n_init=10)
 kmeans_labels = kmeans.fit_predict(X_std)
+end = time()
+K_means_time = end - start
 
 # EM using Gaussian Mixture Models
+start = time()
 gmm = GaussianMixture(n_components=3, covariance_type="full", random_state=0)
 gmm_labels = gmm.fit_predict(X_std)
+end = time()
+EM_time = end - start
 
 # Evaluation metrics
 km_ari = adjusted_rand_score(y, kmeans_labels)
@@ -35,10 +42,12 @@ km_sil = silhouette_score(X_std, kmeans_labels, metric="euclidean")
 em_sil = silhouette_score(X_std, gmm_labels, metric="euclidean")
 
 print("=== K-means ===")
+print(f"K-means clustering time: {K_means_time:.4f} seconds")
 print(f"K-means Silhouette: {km_sil:.4f}")
 print(f"ARI: {km_ari:.4f}")
 
 print("\n=== Gaussian Mixture (EM) ===")
+print(f"EM clustering time: {EM_time:.4f} seconds")
 print(f"GMM Silhouette   : {em_sil:.4f}")
 print(f"ARI: {em_ari:.4f}")
 
