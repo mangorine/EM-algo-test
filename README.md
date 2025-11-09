@@ -92,3 +92,4 @@ python QDA.py
 - Classes share similar covariance structures
 - Simpler model interpretation is needed
 
+![Alt Result Graph](qda_res.png)
