@@ -59,33 +59,36 @@ You will also find the graph of clusters of both algorithm plotted by reducing d
 - In fact ,GMM involves Matrix inverse O(D^3) and Covariance update O(D^2) with D the number of features (dimensions of the matrix) while the computation of euclidian norm is O(D) in complexity.
 
 # Next Dataset/QDA
+The [QDA Code](QDA.py) file compares Quadratic Discriminant Analysis (QDA) with Linear Discriminant Analysis (LDA) on the Wine dataset, focusing on classification accuracy and training time.
 
-## QDA Implementation and Results
+## QDA vs LDA Comparison
 
-The QDA (Quadratic Discriminant Analysis) implementation compares QDA with LDA (Linear Discriminant Analysis) on multiple datasets.
+We use scikit-learn to implement both QDA and LDA algorithms and compare their performance using:
 
-### How to run QDA comparison
+- **Accuracy Score**: Classification accuracy on test set
+- **Training Time**: Time taken to fit the model
+- **Decision Boundaries**: QDA allows quadratic boundaries, LDA uses linear boundaries
+
+### How to run QDA
 
 ```bash
-python QDA-comparison.py
+python QDA.py
 ```
 
-For quick results only:
-```bash
-python quick_QDA_results.py
-```
+### Key Differences
 
-### Key Differences: QDA vs LDA
+- **QDA**: Models class-specific covariance matrices (Σ_k) allowing for quadratic decision boundaries
+- **LDA**: Uses pooled covariance matrix (Σ_pooled) resulting in linear decision boundaries
 
-- **QDA**: Assumes different covariance matrices for each class (quadratic decision boundary)
-- **LDA**: Assumes shared covariance matrix across classes (linear decision boundary)
+### Expected Results
 
-### Results Summary
+**QDA typically outperforms LDA when:**
+- Classes have different variances/covariances
+- Decision boundaries are naturally non-linear
+- Sufficient training data is available
 
-**Wine Dataset:**
-- QDA accuracy: ~0.96-0.98
-- LDA accuracy: ~0.94-0.96
-- QDA typically outperforms LDA when classes have different variances
+**LDA may be preferred when:**
+- Training data is limited
+- Classes share similar covariance structures
+- Simpler model interpretation is needed
 
-**Mathematical Advantage:**
-QDA models class-specific covariances: `Σ_k`, while LDA uses pooled covariance: `Σ_pooled`
