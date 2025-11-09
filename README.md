@@ -59,3 +59,37 @@ You will also find the graph of clusters of both algorithm plotted by reducing d
 - In fact ,GMM involves Matrix inverse O(D^3) and Covariance update O(D^2) with D the number of features (dimensions of the matrix) while the computation of euclidian norm is O(D) in complexity.
 
 # Next Dataset/QDA
+The [QDA Code](QDA.py) file compares Quadratic Discriminant Analysis (QDA) with Linear Discriminant Analysis (LDA) on the Wine dataset, focusing on classification accuracy and training time.
+
+## QDA vs LDA Comparison
+
+We use scikit-learn to implement both QDA and LDA algorithms and compare their performance using:
+
+- **Accuracy Score**: Classification accuracy on test set
+- **Training Time**: Time taken to fit the model
+- **Decision Boundaries**: QDA allows quadratic boundaries, LDA uses linear boundaries
+
+### How to run QDA
+
+```bash
+python QDA.py
+```
+
+### Key Differences
+
+- **QDA**: Models class-specific covariance matrices (Σ_k) allowing for quadratic decision boundaries
+- **LDA**: Uses pooled covariance matrix (Σ_pooled) resulting in linear decision boundaries
+
+### Expected Results
+
+**QDA typically outperforms LDA when:**
+- Classes have different variances/covariances
+- Decision boundaries are naturally non-linear
+- Sufficient training data is available
+
+**LDA may be preferred when:**
+- Training data is limited
+- Classes share similar covariance structures
+- Simpler model interpretation is needed
+
+![Alt Result Graph](qda_res.png)
