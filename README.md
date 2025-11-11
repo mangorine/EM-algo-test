@@ -59,37 +59,34 @@ You will also find the graph of clusters of both algorithm plotted by reducing d
 - In fact ,GMM involves Matrix inverse O(D^3) and Covariance update O(D^2) with D the number of features (dimensions of the matrix) while the computation of euclidian norm is O(D) in complexity.
 
 # Next Dataset/QDA
-The [QDA Code](QDA.py) file compares Quadratic Discriminant Analysis (QDA) with Linear Discriminant Analysis (LDA) on the Wine dataset, focusing on classification accuracy and training time.
 
-## QDA vs LDA Comparison
+# QDA sur Dataset Iris
 
-We use scikit-learn to implement both QDA and LDA algorithms and compare their performance using:
+Le fichier [QDA Code](QDA.py) implémente l'Analyse Discriminante Quadratique (QDA) sur le dataset Iris avec validation Leave-One-Out Cross-Validation (LOOCV).
 
-- **Accuracy Score**: Classification accuracy on test set
-- **Training Time**: Time taken to fit the model
-- **Decision Boundaries**: QDA allows quadratic boundaries, LDA uses linear boundaries
+## Méthodologie
 
-### How to run QDA
+- **Dataset**: Iris (150 échantillons, 4 features, 3 classes)
+- **Validation**: Leave-One-Out Cross-Validation (LOOCV)
+- **Visualisation**: PCA pour réduction 4D → 2D
+- **Métriques**: Accuracy LOOCV, rapport de classification, matrice de confusion
+
+### Exécution
 
 ```bash
 python QDA.py
 ```
 
-### Key Differences
+### LOOCV Process
 
-- **QDA**: Models class-specific covariance matrices (Σ_k) allowing for quadratic decision boundaries
-- **LDA**: Uses pooled covariance matrix (Σ_pooled) resulting in linear decision boundaries
+Pour chaque échantillon (1 à 150) :
+1. Entraîner QDA sur 149 échantillons
+2. Prédire sur l'échantillon restant
+3. Calculer l'accuracy moyenne
 
-### Expected Results
+### Sorties
 
-**QDA typically outperforms LDA when:**
-- Classes have different variances/covariances
-- Decision boundaries are naturally non-linear
-- Sufficient training data is available
+- `iris_qda_loocv_results.csv` : Résultats détaillés
+- `qda_res.png` : Visualisations PCA + matrice de confusion
 
-**LDA may be preferred when:**
-- Training data is limited
-- Classes share similar covariance structures
-- Simpler model interpretation is needed
-
-![Alt Result Graph](qda_res.png)
+![QDA Results on Iris](qda_res.png)
