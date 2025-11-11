@@ -60,11 +60,11 @@ You will also find the graph of clusters of both algorithm plotted by reducing d
 
 # Next Dataset/QDA
 
-# QDA sur Dataset Iris
+## QDA sur Dataset Iris
 
 Le fichier [QDA Code](QDA.py) implémente l'Analyse Discriminante Quadratique (QDA) sur le dataset Iris avec validation Leave-One-Out Cross-Validation (LOOCV).
 
-## Méthodologie
+### Méthodologie
 
 - **Dataset**: Iris (150 échantillons, 4 features, 3 classes)
 - **Validation**: Leave-One-Out Cross-Validation (LOOCV)
